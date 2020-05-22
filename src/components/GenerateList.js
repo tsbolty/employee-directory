@@ -30,41 +30,14 @@ class GenerateList extends Component{
         });
     };
 
-    nameArray = ()=> {
-        const newArray = []
-        this.state.results.map(({name})=>{
-        newArray.push(name.first)
-        console.log(newArray.sort())
-        this.setState({
-            results: [...this.state.results, newArray]
-        })
-        return newArray
-    })
-    }
-
     
-
-    // sorted = (a, b) => {
-    //     // if(this.state.results.name < this.state.results.name) { return -1; }
-    //     // if(this.state.results.name > this.state.results.name) { return 1; }
-    //     // return 0;
-    //     // console.log(a)
-    // }
-
-    // handleSort = ()=>{
-    //     if(this.state.order === "descend"){
-    //         this.state.results.sort()
-    //         console.log(this.nameArray())
-    //     }
-    //     //  else if(this.state.order === "ascend"){
-    //     //     this.state.results.reverse(name)
-    //     //     console.log(this.state.results)
-    //     // }
-    //     this.setState({
-    //         results: this.state.results
-    //     })
-        
-    // }
+    nameArray = ()=> {
+        const sorted = [ ...this.state.results ].sort((a, b) => a.name.first > b.name.first ? 1 : -1)
+        this.setState({
+            ...this.state,
+            results: sorted
+        })
+    }
 
     render() {
         return (
