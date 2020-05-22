@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import API from "../utils/API";
 import SearchForm from "./SearchForm";
 import ResultList from "./ResultList";
-
  
 
 class GenerateList extends Component{
@@ -30,7 +29,6 @@ class GenerateList extends Component{
         });
     };
 
-    
     nameArray = ()=> {
         const sorted = [ ...this.state.results ].sort((a, b) => a.name.first > b.name.first ? 1 : -1)
         this.setState({
