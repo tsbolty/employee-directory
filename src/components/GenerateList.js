@@ -30,7 +30,6 @@ class GenerateList extends Component{
         });
     };
 
-    
     nameArray = ()=> {
         const sorted = [ ...this.state.results ].sort((a, b) => a.name.first > b.name.first ? 1 : -1)
         this.setState({
