@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import API from "../utils/API";
 import SearchForm from "./SearchForm";
 import ResultList from "./ResultList";
-
  
 
 class GenerateList extends Component{
