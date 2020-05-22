@@ -3,10 +3,13 @@ import API from "../utils/API";
 import SearchForm from "./SearchForm";
 import ResultList from "./ResultList";
 
+ 
+
 class GenerateList extends Component{
     state = {
         search: "",
-        results: []
+        results: [],
+        order: "descend"
     };
 
     componentDidMount() {
@@ -27,10 +30,40 @@ class GenerateList extends Component{
         });
     };
 
-    // filteredResults = ()=>{
-    //     if(this.state.results.firstName.includes(this.state.search)){
-    //         return <ResultList results= {this.state.results} />
+    nameArray = ()=> {
+        const newArray = []
+        this.state.results.map(({name})=>{
+        newArray.push(name.first)
+        console.log(newArray.sort())
+        this.setState({
+            results: [...this.state.results, newArray]
+        })
+        return newArray
+    })
+    }
+
+    
+
+    // sorted = (a, b) => {
+    //     // if(this.state.results.name < this.state.results.name) { return -1; }
+    //     // if(this.state.results.name > this.state.results.name) { return 1; }
+    //     // return 0;
+    //     // console.log(a)
+    // }
+
+    // handleSort = ()=>{
+    //     if(this.state.order === "descend"){
+    //         this.state.results.sort()
+    //         console.log(this.nameArray())
     //     }
+    //     //  else if(this.state.order === "ascend"){
+    //     //     this.state.results.reverse(name)
+    //     //     console.log(this.state.results)
+    //     // }
+    //     this.setState({
+    //         results: this.state.results
+    //     })
+        
     // }
 
     render() {
@@ -41,7 +74,7 @@ class GenerateList extends Component{
                         search={this.state.search}
                         handleInputChange={this.handleInputChange}
                     />
-                    <ResultList results= {this.state.results} />
+                    <ResultList results= {this.state.results} search = {this.state.search} nameArray= {this.nameArray} order= {this.state.order}/>
                 </div>
             </>
         );

@@ -6,25 +6,36 @@ function ResultList(props) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
+          <th></th>
+          <th onClick = {()=> props.nameArray()}>Name</th>
           <th>Phone Number</th>
           <th>Email</th>
+          <th>Date of Birth</th>
         </tr>
       </thead>
       <tbody className="list-group">
-        {props.results.map(result => (
-          <tr className="list-group-item" key={result.id.value}>
+        {props.results.map(({name, phone, email, dob, login, picture}) => {
+          if(name.first.toLowerCase().includes(props.search)){
+          return (
+          <tr className="list-group-item" key={login.uuid}>
             <td>
-              {result.name.first} {result.name.last}
+              <img src={picture.thumbnail} alt=""/>
             </td>
             <td>
-              {result.phone}
+              {name.first} {name.last}
             </td>
             <td>
-              {result.email}
+              {phone}
+            </td>
+            <td>
+              {email}
+            </td>
+            <td>
+              {dob.date.slice(0, 10)}
             </td>
           </tr>
-        ))}
+        )}}
+        )}
       </tbody>
     </table>
   );
