@@ -11,16 +11,17 @@ class GenerateList extends Component{
         order: "descend"
     };
 
+    
+    apiCall = () => {
+      API.search()
+      .then(res => this.setState({ results: res.data.results }))
+      .catch(err => console.log(err));
+    };
+    
     componentDidMount() {
         this.apiCall();
     };
-
-    apiCall = () => {
-        API.search()
-          .then(res => this.setState({ results: res.data.results }))
-          .catch(err => console.log(err));
-    };
-
+    
     handleInputChange = event => {
         const search = event.target.name;
         const value = event.target.value;
